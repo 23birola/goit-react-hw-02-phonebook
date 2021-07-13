@@ -5,6 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactList from './components/ContactList/ContactList';
 import Filter from './components/Filter/Filter';
+import css from './App.module.css';
 
 export default class App extends Component {
 
@@ -29,6 +30,9 @@ export default class App extends Component {
 
     this.setState((prevState) => ({ contacts: [...prevState.contacts, {id, name, number}] 
     }))
+
+    e.target.elements.name.value = "";
+    e.target.elements.number.value = "";
   }
 
   handleChange = (e) => {
@@ -56,7 +60,7 @@ export default class App extends Component {
     const selectedContacts = this.handleFilter();
 
     return (
-      <div>
+      <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm onSubmit={this.onSubmit}/>
         
